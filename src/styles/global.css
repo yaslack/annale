@@ -1,0 +1,259 @@
+@import './variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-dark);
+  background-image: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--glass-highlight);
+}
+
+/* Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-shadow);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--primary-glow);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-main);
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  border: 1px solid var(--glass-border);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--glass-highlight);
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: var(--danger);
+}
+
+.input-field {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  width: 100%;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  width: 100%;
+}
+
+.title-gradient {
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Mobile Responsive Overrides */
+@media (max-width: 768px) {
+  .page-container {
+    padding: var(--spacing-sm);
+    padding-bottom: 100px; /* Space for bottom nav */
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  /* Hide desktop header buttons on mobile */
+  header > div:last-child {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .btn-primary, .btn-secondary, .btn-danger {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Revision Sheet Modal Styles */
+/* Revision Sheet Modal Styles */
+.sheet-modal {
+  background: var(--bg-dark); /* Unified background */
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 900px;
+  height: 90vh;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.sheet-header {
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--glass-border);
+  background: transparent; /* Remove distinct header background */
+}
+
+.sheet-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 3rem;
+  background: transparent; /* Remove nested background */
+  color: var(--text-main);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.sheet-content h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; }
+.sheet-content h2 { font-size: 1.8rem; color: var(--secondary); margin-top: 2rem; margin-bottom: 1rem; }
+.sheet-content h3 { font-size: 1.4rem; color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.8rem; }
+.sheet-content p { margin-bottom: 1.2rem; text-align: justify; }
+.sheet-content ul, .sheet-content ol { margin-bottom: 1.5rem; padding-left: 2rem; }
+.sheet-content li { margin-bottom: 0.5rem; }
+.sheet-content strong { color: #fff; font-weight: 600; }
+.sheet-content em { color: var(--text-dim); }
+.sheet-content blockquote { border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 4px; }
+
+.sheet-footer {
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  border-top: 1px solid var(--glass-border);
+  background: transparent; /* Remove distinct footer background */
+}
+
+/* Mobile Sheet Overrides */
+@media (max-width: 768px) {
+  .sheet-modal {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    background: var(--bg-dark); /* Ensure full coverage */
+  }
+
+  .sheet-header {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .sheet-content {
+    padding: 1.5rem;
+    font-size: 1.15rem; 
+  }
+
+  .sheet-footer {
+    padding: 1rem;
+    flex-direction: column;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+}
